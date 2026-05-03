@@ -356,6 +356,8 @@ time => free
 
 #################################################
 
+Operator တွေကို အုပ်စုခွဲလိုက်ရင် ခုလိုရလာပါမယ်။
+
 Groups of operators (8)
 
 1. Arithmetic Operators(9)
@@ -366,23 +368,26 @@ Groups of operators (8)
 6. Logical operator (2)
 7. conditional operator(1)
 8. assignment operator (14)
-      
+
+ternary လိုမျိုး တစ်ခုတည်းရှိတာကိုတော့ မထည့်ထားပါဘူး။
+
 #################################################
+
+Operand အရေအတွက်နဲ့ အုပ်စုခွဲရင် ခုလိုရလာပါမယ်။
 
 Groups of operators by operands (3)
 
 1. Unary operator   (4)   (+, -, ~, not)
+အဆင့်နှစ်က သုံးခုနဲ့ အဆင့် 10 က တစ်ခုနဲ့ဆိုတော့ unary operator 4 ခု ရှိပါမယ်။
+
 2. Binary operator  (38)
+43 ထဲက unary 4 ခုနဲ့ ternary 1 ခုကို နှုတ်လိုက်ရင် binary အရေအတွက်ရပါမယ်။
+
 3. Ternary operator (1)
 
 ################################################# 
 
 Precedence(15)
-
-(e u */ +-) 
-(shift and or 2) 
-(c not and or) 
-(t assignment walrus)
 
 1. e 
 2. u        -, +, ~
@@ -405,11 +410,47 @@ Precedence(15)
 
 #################################################
 
-Associativity
-- e, u, assign are right-sided bind.  ( 1 + 4 + 14 => 19 )
-- left-sided bind ( 43 - 19 => 24 )
+Precedence 15 ခုက ဒါကို အလွတ်ကျက်ရပါမယ်။
+
+(e u */ +-) 
+(shift and or 2) 
+(c not and or) 
+(t assignment walrus)
+
+#################################################
+
+Associativity ကတော့ (e u assign) ကို အလွတ်ကျက်ရပါမယ်။
+
+1.  e, u, assign က right-sided bind ဖြစ်ပါတယ်။
+အားလုံးပေါင်းရင် 19 ခု ရှိပါမယ်။ ( 1 + 4 + 14 => 19 )
+
+2. ကျန်တာက left-sided bind ဖြစ်ပါမယ်။ ( 43 - 19 => 24 )
+
+#################################################
+
+အနှစ်ချုပ်
+
+e u မြှောက်စား ပေါင်းနှုတ်
+shift and or နှစ်ခု
+c not and or
+t assignment walrus 
+
+
+e u assign
+
+#################################################
+
+ဒီအတိုကောက်နှစ်ခုတည်းနဲ့ 
+1. Precedence 15
+2. Operator 43
+3. Associativity(L19, R 24)
+4. Groups of operators (8)
+5. Groups of operators by operand (3)
+
+ဒီငါးခုလုံးကို ပြန်ပြီး ပုံဖော်နိုင်ရပါမယ်။
 
 ##################################################################################################
+
 
 """
 
