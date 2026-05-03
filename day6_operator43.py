@@ -443,7 +443,7 @@ e u assign
 ဒီအတိုကောက်နှစ်ခုတည်းနဲ့ 
 1. Precedence 15
 2. Operator 43
-3. Associativity(L19, R 24)
+3. Associativity(R 19, L 24)
 4. Groups of operators (8)
 5. Groups of operators by operand (3)
 
