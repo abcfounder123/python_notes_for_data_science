@@ -200,5 +200,103 @@ else:
 
 ##########################################################################
 
+Code quality
+
+A+             90
+A              80
+B              70
+C              50
+F
+
+A+  =>  c1
+A   =>  not c1 and c2
+B   =>  not c1 and c2 and c3
+C   =>  not c1 and c2 and not c3 and c4
+F   =>  not c1 and c2 and not c3 and not c4
+
+c1 = mark >= 90
+c2 = mark >= 80
+c3 = mark >= 70
+c4 = mark >= 50
+
+#####################################
+
+mark = 100
+
+c1 = mark >= 90
+c2 = mark >= 80
+c3 = mark >= 70
+c4 = mark >= 50
+
+if c1:
+    print("A+")
+
+elif c2:
+    print("A")
+
+elif c3:
+    print("B")
+
+elif c4:
+    print("C")
+
+else:
+    print("Fail")
+    
+
+time = 2 to 8 micro sec
+memory = c1 to c4 (120 byte)
+    
+#####################################
+
+mark = 75
+
+if mark >= 90:
+    print("A+")
+
+elif mark >= 80:
+    print("A")
+
+elif mark >= 70:
+    print("B")
+
+elif mark >= 50:
+    print("C")
+
+else:
+    print("Fail")
+
+time = 2 to 8 micro sec
+memory = 0 to 30 byte
+
+#####################################
+
+mark = 30
+
+if 100 >= mark >= 90:
+    print("A+")
+
+if 90 > mark >= 80:
+    print("A")
+
+if 80 > mark >= 70:
+    print("B")
+
+if 70 > mark >= 50:
+    print("C")
+
+if mark < 50:
+    print("Fail")
+       
+#######    
+
+c  => 9
+if => 5
+
+time = 14 micro sec
+memory = 0 to 30 bytes
+
+####################################################################################
+
 """
 
