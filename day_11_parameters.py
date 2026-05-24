@@ -368,5 +368,166 @@ f(1, 2, 3, name="Mg Mg", age=10)
 
 ##########################################
 
+6. No.5
+
+variable length + simple data
+
+m1   60 + 70 + 65
+m2   60 + 70 + 65 + 70 + 68
+m3   ...
+
+
+def add(*x):
+    ans = 0
+    for number in x:
+        ans += number
+    print(ans)
+
+
+add(60, 70, 65)
+add(60, 70, 65, 70, 68)
+add()
+
+##########################################
+
+7. No.6
+
+variable length + complicated data
+
+
+def info(**x):
+    print(x)
+
+
+info()
+info(name="abc", age=10, weight = 20)
+
+##########################################
+
+8. No.3 + No.6
+
+at least 3 values by pos
+and more items
+
+
+def f(a, b, c, /, **x):
+    print(a, b, c, x)
+
+
+f(1, 2, 3)
+f(1, 2, 3, name="Mg Mg", age=10)
+
+##########################################
+
+9. No.5 + No.4
+
+at least 2 values by name
+and more values
+
+
+def f(*args, name, password):
+    print(args)
+    print(name, password)
+
+
+f(1, 2, 3, 4, "Mg Mg", 12345, name="abc", password=1234)
+
+##########################################
+
+10. No.3 + No.5
+
+at least 3 values by pos
+and more values
+
+
+def f(a, b, c, /, *x):
+    print(a, b, c)
+    print(x)
+
+
+f(1, 2, 3)
+f(1, 2, 3, 4, 5, 6)
+
+##########################################
+
+11. No.4 + No.6
+
+at least 2 values by name
+and more items
+
+
+def f(*, user_name, password, **x):
+    print(user_name, password)
+    print(x)
+
+
+f(user_name="Mg Mg", password="12345")
+f(user_name="Mg Mg", password="12345", gender="Male")
+
+##########################################
+
+12. No.3 + No.5 + No.4 + No.6
+ 
+10 + 11
+
+at least 3 values by pos
+and more values
+
+at least 2 values by name
+and more items
+
+
+def f(a, b, c, /, *t, user_name, password, **d):
+    print(a, b, c)
+    print(t)
+    print(user_name, password)
+    print(d)
+
+
+f(1, 2, 3, 4, 5, 6, user_name="Mg Mg", password="12345", gender="Male", age=10)
+
+##########################################
+
+13. Unlimited function (No.5 + No.6)
+
+all values, all items, all forms
+variable length of values, variable length of items, (F1, F2, F3)
+
+
+def f(*args, **kw):
+    print(args)
+    print(kw)
+    print("-"* 42)
+
+
+f()
+
+f(1)
+f(1, 2, 3)
+
+f(age=10)
+f(age=10, weight=20, name="Mg Mg")
+
+f(1, 2, 3, age=10, weight=20, name="Mg Mg")
+
+##########################################
+
+14. No.5 + No.2
+
+(*args, sep=' ', end='\n', file=None, flush=False)
+
+##########################################
+
+15. No.2 + No.3
+
+(prompt='', /)
+
+##########################################
+
+*x   all positional arguments    (args)
+**y  all keyword arguments       (kw, kwargs)
+
+####################################################################################
+
 """
 
