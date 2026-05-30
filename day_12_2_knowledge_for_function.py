@@ -52,4 +52,65 @@ Function (10)
 
 ##########################################
 
+Decomposition
+
+     .    .
+   X .    .  
+ ----------------
+     . X  .  
+ ----------------
+     .    .  X
+     .    .
+
+
+Board
+draw X
+draw O
+check win
+check tie
+marks
+
+##########################################
+
+Passing correct values to function
+
+a = 20
+b = 10
+c = 30
+args = (1000, 700, 1100)
+user_name = "Mg Mg"
+password  = "12345"
+kw        = {country: "Myanmar", "age": 10}
+
+
+a, b, c,                pos
+*args                   all pos
+user_name, password     keyword
+**kw                    all items
+
+
+def f(a, b, c, /, *args, user_name, password, **kw):
+    print(a, b, c)
+    print(args)
+    print(user_name, password)
+    print(kw)
+
+
+f(20, 10, 30, 1000, 700, 1100, user_name="Mg Mg", password="12345", country="Myanmar", age=10)
+
+##########################################
+
+Checking Parameters
+
+No.5 + No.2
+help(print)   =>   def print(*args, sep=' ', end='\n', file=None, flush=False):
+
+No.2 + No.3
+help(input)   =>   def input(prompt='', /):
+
+No.3
+help(len)     =>   def len(obj, /):
+
+####################################################################################
+
 """
