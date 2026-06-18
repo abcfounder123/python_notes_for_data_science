@@ -419,11 +419,6 @@ Precedence 15 ခုက ဒါကို အလွတ်ကျက်ရပါမ�
 
 Associativity ကတော့ (e u assign) ကို အလွတ်ကျက်ရပါမယ်။
 
-1.  e, u, assign က right-sided bind ဖြစ်ပါတယ်။
-အားလုံးပေါင်းရင် 19 ခု ရှိပါမယ်။ ( 1 + 4 + 14 => 19 )
-
-2. ကျန်တာက left-sided bind ဖြစ်ပါမယ်။ ( 43 - 19 => 24 )
-
 #################################################
 
 အနှစ်ချုပ်
@@ -439,11 +434,12 @@ e u assign
 #################################################
 
 ဒီအတိုကောက်နှစ်ခုတည်းနဲ့ 
-1. Precedence 15
-2. Operator 43
-3. Associativity(R 19, L 24)
-4. Groups of operators (8)
-5. Groups of operators by operand (3)
+
+1. Precedence (15)
+2. Operators (43)
+3. Groups of operators (8 ) 
+4. Groups of operators by operand (3) (4, 38, 1)
+5. Associativity (e u assign) (19, 24)
 
 ဒီငါးခုလုံးကို ပြန်ပြီး ပုံဖော်နိုင်ရပါမယ်။
 
