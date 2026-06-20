@@ -183,4 +183,24 @@ class Dollar:
 
 ##################################################################################################
 
+"Test for exercises"
+
+print(1 .dollar + 5000 .kyat)
+print(1 .dollar - 5000 .kyat)
+print(1 .dollar == 5000 .kyat)
+
+print(id(1 .dollar))
+print(id(1 .dollar))
+print(id(1 .dollar))
+
+print(5000 .kyat + 1 .dollar)
+print(5000 .kyat - 1 .dollar)
+print(5000 .kyat == 1 .dollar)
+
+print(id(5000 .kyat))
+print(id(5000 .kyat))
+print(id(5000 .kyat))
+
+##################################################################################################
+
 """
