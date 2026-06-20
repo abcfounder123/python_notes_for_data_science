@@ -107,7 +107,7 @@ dollar နဲ့ kyats လိုမျိုး အမျိုးအစား �
 
 if type(other) == Dollar:
     return Dollar(self.n + other.n)
-if type(y) == Kyat:
+if type(other) == Kyat:
     return Dollar(self.n + other.n / 5000)
 
 #################################################
