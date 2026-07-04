@@ -176,7 +176,7 @@ class R:
 
 #################################################
 
-Changing iteration Style of list
+Changing iteration style of list
 
 
                        list      
@@ -225,7 +225,7 @@ print("-" * 42)
 
 #################################################
 
-Adding iteration Style of int
+Adding iteration to int
 
 
                        int      
