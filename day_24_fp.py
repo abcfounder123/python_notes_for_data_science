@@ -868,5 +868,470 @@ print(z.__closure__)     # closed  1 and 2 and 3
 
 ##################################################################################
 
+7.  Map
+
+ကီလိုဂရမ်ကနေ ပေါင်အဖြစ် ပြောင်းတာမျိုး ၊ ဒေါ်လာကို ကျပ်ပြောင်းတာမျိုး data တွေကို transform လုပ်ဖို့အတွက် သုံးပါတယ်။
+
+- create a connection between fun and data, data pip line
+- transform(kg to lb) (1 litre, 1kg, 2.2lb)
+
+#########################################
+
+>> transform(kg to lb)
+
+
+def f1(kg):
+    print(f"f1({kg})")
+    return round(kg * 2.2, 2)
+
+
+kgs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+#########################################
+
+lbs = []
+
+for kg in kgs:                   # for loop
+    lbs.append(f1(kg))
+
+lbs2 = [f1(kg) for kg in kgs]    # list comprehension
+
+lbs3 = map(f1, kgs)              # map => a connection between f1 and kgs
+
+
+#########################################
+
+List comprehension example
+
+
+def f1(kg):
+    print("h")
+    return round(kg * 2.2, 2)
+
+
+kgs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+l = [f1(kg) for kg in kgs] # 10 s
+
+print(l)
+
+#########################################
+
+f1
+f1
+f1
+f1
+f1
+f1
+f1
+f1
+f1
+f1
+[2.2, 4.4, 6.6, 8.8, 11.0, 13.2, 15.4, 17.6, 19.8, 22.0]
+
+500 MB => 5 minutes
+
+1 MB => 1 sec
+
+1 MB => 1 sec
+
+1 MB => 1 sce
+
+#########################################
+
+Map example
+
+
+def f1(kg):
+    print("h")
+    return round(kg * 2.2, 2)
+
+
+kgs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+l = map(f1, kgs)
+
+print(next(l))  # 1s
+
+#########################################
+
+f1
+2.2
+
+##################################################################################
+
+Time consumption
+
+all data => 1 hour
+
+1 page  => 1 sec
+
+##################################################################################
+
+Memory consumption
+
+lbs = [2.2, 4.4, 6.6, 8.8, 11.0, 13.2, 15.4, 17.6, 19.8, 22.0]
+list = 50 bytes
+float 10 = 300 bytes
+total = 350 bytes
+
+map = 50 bytes
+next(l)
+float 1 = 30 bytes = 0 bytes
+next(l)
+float 1 = 30 bytes = 0 bytes
+
+##################################################################################
+
+kgs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+lbs = [f1(kg) for kg in kgs]
+
+list      => 50
+int 10    => 280       
+lbs       => 50
+float 10  => 300 bytes 
+total     => 680 bytes
+
+########################################
+
+
+def f1(kg):
+    print(f"f({kg})")
+    return round(kg * 2.2, 2)
+
+
+kgs = range(1, 11, 1)
+l = map(f1, kgs)
+
+print(next(l))
+
+########################################
+
+range(1, 11) => 30
+map     => 30 byte
+int 1   => 28 byte  => 0 bytes
+float 1 => 30 bytes => 0 bytes
+
+total   => 60 to 118
+
+##################################################################################
+
+Pip line
+
+1000 GB  (1 page = 1MB )
+
+8 GB
+
+database = 1 page (next value)  900  100
+pip_line = map(negative_word, database)
+
+total = 0  -> 10 -> 18 -> 100_000
+
+##################################################################################
+
+In List Comprehension or 'for loop',
+if 1 error, None of result.
+
+
+def f1(kg):
+    print(f"f1({kg})")
+    return round(kg * 2.2, 2)
+
+
+kgs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "abc"]   # 11 => 10 + 1(error)
+lbs = [f1(kg) for kg in kgs]
+print(lbs)
+
+#########################################
+
+Map can work well until error.
+
+
+def f1(kg):
+    print(f"f1({kg})")
+    return round(kg * 2.2, 2)
+
+
+kgs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, "abc"]   # 11 => 10 + 1(error)
+lbs = map(f1, kgs)
+print(next(lbs))
+print(next(lbs))
+print(next(lbs))
+print(next(lbs))
+print(next(lbs))
+print(next(lbs))
+print(next(lbs))
+print(next(lbs))
+print(next(lbs))
+print(next(lbs))
+print(next(lbs))  # error
+
+##################################################################################
+
+8. Filter
+- Filtering data
+
+လိုအပ်တဲ့ data ကို စစ်ထုတ်ဖို့အတွက် သုံးပါတယ်။
+စုံကိန်းတွေကိုပဲ စစ်ထုတ်တာမျိုး ၊ အောင်စာရင်းထဲက ဂုဏ်ထူးထွက်တဲ့ ကျောင်းသားတွေကိုပဲ စစ်ထုတ်တာမျိုးပေါ့။
+
+-----------------------------------------
+
+l = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+even_numbers = []
+
+#########################################
+
+Filtering data (even number)
+
+1. for loop example
+
+def is_even(n):
+    return n % 2 == 0
+
+
+l = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+even_numbers = []
+
+for n in l:
+    if is_even(n):
+        even_numbers.append(n)
+
+print(even_numbers)
+
+#########################################
+
+2. LC example
+
+l = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+leven_numbers = [n for n in l if is_even(n)]   # [2, 4, 6, 8, 10]
+
+print(leven_numbers)
+
+#########################################
+
+2. filter example
+
+l = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+f = filter(is_even, l)
+
+print(next(f))
+print(next(f))
+
+#########################################
+
+
+def is_even(n):
+    print(f"is even({n})")
+    return n % 2 == 0
+
+
+l = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+f = filter(is_even, l)
+
+print(next(f))  #  1 from list , is_even(1) => 2 from list , is_even(2) => 2
+print(next(f))  #  3 from list , is_even(3) => 4 from list , is_even(4) => 4
+
+#########################################
+
+Time and memory
+
+After 10s,  [2, 4, 6, 8, 10]
+
+
+2            after 2s
+4            after 2s
+6            after 2s
+8            after 2s
+10           after 2s
+
+##################################################################################
+
+9. Reduce
+data တွေကို တစ်ခုတည်းအဖြစ် လျော့ချဖို့သုံးပါတယ်။
+ဘာသာရပ်ခြောက်ခုရဲ့ အမှတ်စာရင်းခြောက်ခုကို စုစုပါင်းရမှတ်ဆိုပြီး တစ်ခုတည်းအဖြစ် လျော့ချလိုက်တာမျိုးပါ။
+
+-----------------------------------------
+
+- reducing data
+- all data to 1 data
+
+#########################################
+
+numbers to total
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10] to 55
+
+#########################################
+
+
+from functools import reduce
+
+
+def add(a, b):
+    print(f"add({a}, {b})")
+    return a + b
+
+
+l = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+r = reduce(add, l)  # add(1, 2) = 3 -> add(3, 3) = 6 -> add(6, 4) = 10 ... => 55
+
+print(r)
+
+##################################################################################
+
+10. Data (Transform, filter, reduce)
+
+1. map      =>   kg to lb                 =>   10 to 10
+
+2. filter   =>   even numbers from list   =>   10 to 5
+
+3. reduce   =>   all marks to total marks =>   6 to 1
+
+-----------------------------------------
+
+"Data ပြောင်းလဲနည်း သုံးမျိုး"
+
+Data တွေကို Transform, filter, reduce ဆိုပြီး ပုံစံသုံးမျိုးနဲ့ ပြောင်းလဲနိုင်ပါတယ်။
+
+Transform လုပ်ချင်တဲ့အခါ map ကို သုံးနိုင်ပါတယ်။
+1. map => kg to lb  => 10 to 10
+
+လိုချင်တာကို စစ်ထုတ်ချင်တဲ့အခါ filter ကို သုံးနိုင်ပါတယ်။
+2. filter => even numbers from list => 10 to 5
+
+တစ်ခုတည်းအဖြစ် လျော့ချချင်တဲ့အခါ reduce ကို သုံးနိုင်ပါတယ်။
+3. reduce => all data -> 1 data (total marks)
+
+##################################################################################
+
+11. Recursion
+
+1. Direct Recursion ( tail, head, tree, nested )
+2. Indirect Recursion
+
+- recursive program
+
+Recursion example => fibonacci
+
+Recursion and cache
+1. Normal recursion
+2. Recursion with cache
+3. Recursion with lru cache  (Least Recently Used Cache)
+
+-----------------------------------------
+
+recursion က နည်းနည်းရှုတ်ပေမယ့် မှတ်စရာ ဒီနှစ်ခုပဲရှိပါတယ်။
+
+1. Fibonacci လိုမျိုး တစ်ဆင့်ချင်းဖြေရှင်းရမယ့် နေရာမှာသုံး
+2. လိုအပ်ပါက မှတ်တမ်းယူထားရန် (cache သုံးရန်)
+
+#########################################
+
+p1
+p2
+p3
+pr    tail
+
+-----------------------------------------
+
+pr    head
+p1
+p2
+p3
+
+-----------------------------------------
+
+pr       tree
+pr
+                              pr
+
+                        pr          pr
+
+                    pr      pr    pr     pr
+
+-----------------------------------------
+
+pr(pr)   nested
+
+#########################################
+
+a. Tail Recursion
+
+
+def f(n):
+    if n > 0:
+        print(n)
+        f(n - 1)  # tail
+    return
+
+
+f(3)
+
+
+    if 3 > 0:
+        print(3)
+        if 2 > 0:
+           print(2)
+           if 1 > 0:
+              print(1)
+              if 0 > 0:
+                  print(n)
+                  f(n - 1)
+              return            stop f(0)
+           return               stop f(1)
+        return                  stop f(2)
+    return                      stop f(3)
+
+#########################################
+
+b. Head Recursion
+
+def f(n):
+    if n > 0:
+        f(n - 1)  # head
+        print(n)
+    return None
+
+
+f(3)
+
+#########################################
+
+
+    if 3 > 0:
+        if 2 > 0:
+            if 1 > 0:
+                if 0 > 0:
+                    f(n - 1)
+                    print(n)
+                return         stop f(0)
+                print(1)
+            return             stop f(1)
+            print(2)
+        return                 stop f(2)
+        print(3)
+    return                     stop f(3)
+
+
+#########################################
+
+Tail and Head
+
+
+def t(n):
+    if n > 0:
+        print(n)
+        t(n - 1) # tail
+
+
+def h(n):
+    if n > 0:
+        h(n - 1)  # head
+        print(n)
+
+
+t(5)  #  5 4 3 2 1
+h(5)  #  1 2 3 4 5
+
+#########################################
+
 """
 
