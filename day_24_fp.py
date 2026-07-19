@@ -1333,5 +1333,554 @@ h(5)  #  1 2 3 4 5
 
 #########################################
 
+c. Tree Recursion
+
+2 or more recursive program
+
+f()      => recursive program
+f()      => recursive program
+
+#########################################
+
+
+def f(n):
+    if n > 0:
+        print(n)
+        f(n - 1)   # calling once
+        f(n - 1)   # calling twice
+    return
+
+f(5)
+
+-----------------------------------------
+
+
+if 3 > 0:
+    print(3)
+    if 2 > 0:
+        print(2)
+        if 1 > 0:
+            print(1)
+            if 0 > 0:
+                print(n)
+                f(n - 1)
+                f(n - 1)
+            return              f(0)
+            if 0 > 0:
+                print(n)
+                f(n - 1)
+                f(n - 1)
+            return              f(0)
+        return                  f(1)
+        if 1 > 0:
+            print(1)
+            if 0 > 0:
+                print(n)
+                f(n - 1)
+                f(n - 1)
+            return              f(0)
+            if 0 > 0:
+                print(n)
+                f(n - 1)
+                f(n - 1)
+            return              f(0)
+        return                  f(1)
+    return                      f(2)
+
+    if 2 > 0:
+        print(2)
+        if 1 > 0:
+            print(1)
+            if 0 > 0:
+                print(n)
+                f(n - 1)
+                f(n - 1)
+            return              f(0)
+            if 0 > 0:
+                print(n)
+                f(n - 1)
+                f(n - 1)
+            return              f(0)
+        return                  f(1)
+        if 1 > 0:
+            print(1)
+            if 0 > 0:
+                print(n)
+                f(n - 1)
+                f(n - 1)
+            return              f(0)
+            if 0 > 0:
+                print(n)
+                f(n - 1)
+                f(n - 1)
+            return              f(0)
+        return                  f(1)
+    return                      f(2)
+
+return                          f(3)
+
+-----------------------------------------
+
+3
+
+2
+1
+1
+
+2
+1
+1
+
+
+
+-----------------------------------------
+
+                           f(3)                                            1
+
+                 f(2)                   f(2)                               2
+
+            f(1)     f(1)          f(1)        f(1)                        4
+
+        f(0) f(0)  f(0) f(0)    f(0) f(0)     f(0) f(0)                    8
+        
+
+recursion depth = 4
+
+----------------------------------------------------------------------------------
+
+                                                f(4)
+
+                           f(3)                                              f(3)
+
+                 f(2)                   f(2)                     f(2)                   f(2)
+
+            f(1)     f(1)          f(1)        f(1)         f(1)     f(1)          f(1)        f(1)
+
+        f(0) f(0)  f(0) f(0)    f(0) f(0)     f(0) f(0)  f(0) f(0)  f(0) f(0)    f(0) f(0)     f(0) f(0)      
+
+----------------------------------------------------------------------------------
+
+4
+3
+2
+1
+1
+2
+1
+1
+3
+2
+1
+1
+2
+1
+1
+
+----------------------------------------------------------------------------------
+
+f(5)
+
+5
+
+4
+3
+2
+1
+1
+2
+1
+1
+3
+2
+1
+1
+2
+1
+1
+
+4
+3
+2
+1
+1
+2
+1
+1
+3
+2
+1
+1
+2
+1
+1
+
+----------------------------------------------------------------------------------
+
+
+def f(n):
+    if n > 0:
+        print(n)
+        f(n - 1)
+        f(n - 1)
+        f(n - 1)
+    return
+
+
+f(3)
+
+-----------------------------------------
+
+                                3                            1
+
+                 2              2              2             3
+
+            1   1   1       1   1   1      1   1   1         9
+
+           000 000 000     000 000 000    000 000 000        27
+
+##################################################################################
+
+d. Nested Recursion
+
+f()      => normal recursive program
+f(f())   => nested recursive program
+
+#########################################
+
+
+def f(n):
+    print(f"f({n})")
+    if n > 100:
+        return n - 10
+    else:
+        return f(f(n+11))
+
+
+ans = f(99)
+print(ans)
+
+-----------------------------------------
+
+1. f(99)        =>  return f(f(110))  =>  ?
+2. f(f(110))
+3. f(100)
+4. f(f(111))
+5. f(101)
+>> 91
+
+-----------------------------------------
+
+                            f(99)
+                            f(110)
+                            f(100)
+                            f(111)
+                            f(101)
+
+f(99)  =>  recursive count  = 5
+f(98)  =>  recursive count  = 7
+f(97)  =>  recursive count  = 9
+f(96)  =>  recursive count  = 11
+f(49)  =>  recursive count  = ?
+
+##################################################################################
+
+2. Indirect Recursion
+
+Indirect recursion between A() and B().
+
+A() calls B() and B() calls A().
+
+A(5) => 5
+B(4) => 4
+A(3) => 3
+B(2) => 2
+A(1) => 1
+B(0) =>
+
+#########################################
+
+
+def A(n):
+    print(f"A({n})", end=" => ")
+    if n > 0:
+        print(n)
+        B(n-1)
+
+
+def B(n):
+    print(f"B({n})", end=" => ")
+    if n > 0:
+        print(n)
+        A(n-1)
+
+
+A(5)
+
+##################################################################################
+
+Recursion example => fibonacci
+
+f0 = 0
+f1 = 1
+
+f2 = 1
+f3 = 2
+f4 = 3
+f5 = 5
+f6 = f5 + f4
+f10 = f9 + f8
+f100 = f99 + f98
+fn = f(n-1) + f(n-2)
+
+-----------------------------------------
+
+0 1 1 2 3 5 8 13 21 34  .....      Ans
+0 1 2 3 4 5 6  7  8  9            Fibonacci numbers
+
+f0 = 0
+f1 = 1
+
+fn = f(n-1) + f(n-2)
+
+#########################################
+
+
+def fib(n):
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fib(n-1) + fib(n-2)
+
+
+#########################################
+
+"Test"
+
+
+def fib(n):
+    print(f"f({n})")
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fib(n-1) + fib(n-2)
+
+
+ans = fib(3)
+print(ans)
+
+-----------------------------------------
+
+                                     fib(3)
+
+                              fib(2)    +   fib(1)
+
+                          f(1) + f(0)
+
+5
+-----------------------------------------
+
+                                         4
+
+                                    3         2
+
+                                2      1    1    0
+
+                             1    0
+
+9
+-----------------------------------------
+
+Normal recursion
+
+                                                     fib(5)
+
+                                    fib(4)                                       fib(3)
+
+                         fib(3)                 fib(2)                    fib(2)        fib(1)
+
+                 fib(2)        fib(1)       fib(1)    fib(0)          fib(1)    fib(0)
+
+             fib(1)    fib(0)
+
+15
+-----------------------------------------
+
+Recursion with cache
+
+                                                           fib(5)
+
+                                    fib(4)                                       fib(3)
+
+                         fib(3)                 fib(2)
+
+                 fib(2)        fib(1)
+
+             fib(1)    fib(0)
+
+9
+----------------------------------------------------------------------------------
+
+1. Normal recursion
+
+
+def fib(n):
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fib(n-1) + fib(n-2)
+
+
+-----------------------------------------
+
+"Test"
+
+a = 0
+
+def fib(n):
+    global a
+    a += 1
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fib(n-1) + fib(n-2)
+
+
+ans = fib(25)
+print(ans)
+print(a)
+
+#########################################
+
+2. Recursion with cache
+
+
+x = {
+    0: 0,
+    1: 1,
+}
+
+
+def fib(n):
+    if n in x:
+        return x[n]
+    else:
+        ans = fib(n-1) + fib(n-2)
+        x[n] = ans
+        return ans
+
+
+-----------------------------------------
+
+a = 0
+
+x = {
+    0: 0,
+    1: 1,
+}
+
+
+def fib(n):
+    global a
+    a += 1
+    if n in x:
+        return x[n]
+    else:
+        ans = fib(n-1) + fib(n-2)
+        x[n] = ans
+        return ans
+
+
+ans = fib(25)
+print(ans)
+print(a)
+
+##########################################
+
+fib(25)
+1. Normal recursion = 242785
+2. Recursion with cache = 49
+
+#########################################
+
+3. Recursion with lru cache
+
+
+from functools import lru_cache
+
+
+@lru_cache
+def fib(n):
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fib(n-1) + fib(n-2)
+        
+
+-----------------------------------------
+
+"Test"
+
+from functools import lru_cache
+
+a = 0
+
+@lru_cache
+def fib(n):
+    global a
+    a += 1
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fib(n-1) + fib(n-2)
+
+
+ans = fib(25)
+print(ans)
+print(a)
+
+#########################################
+
+fib(25)
+1. Normal recursion         => 242785
+2. Recursion with cache     => 49
+3. Recursion with lru cache => 26
+
+#########################################
+
+fib(40)
+1. Normal recursion         =>  f40 = 20 sec and 331_160_281
+2. Recursion with lru cache =>  f40 =  0 sec and 41
+
+lru = least recently used
+
+##################################################################################
+
+Extra
+
+Add new
+d["age"] = 20
+
+Access
+d["age"]
+
+Update
+d["age"] += 1
+d["age"] = 21
+
+##################################################################################
+
+
 """
 
