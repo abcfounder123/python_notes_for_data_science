@@ -222,6 +222,7 @@ f1()
 
 "shortcut ဖြင့် အမည်တူပေးနည်း"
 
+
 def f2(x):
     def f3():
         print("-" * 41)
@@ -252,6 +253,46 @@ def f1():
     print("Hello")
 
 #################################################################################
+
+"Test"
+
+
+def paragraph(x):
+    def f3():
+        return "<p>" + x() + "</p>"
+    return f3
+
+
+def italic(x):
+    def f3():
+        return "<i>" + x() + "</i>"
+    return f3
+
+
+def h1(x):
+    def f3():
+        return "<h1>" + x() + "</h1>"
+    return f3
+
+
+@italic
+@h1
+def title():
+    return "Decorator"
+
+
+@italic
+@paragraph
+def p():
+    ans = '''Decorator is giugrw bfuwghhwfb uhehf.Bfgwefgewhfefje0f.Auifhwev0we fheih neif9ff hefue9f.'''
+    return ans
+
+
+x = title()
+p = p()
+print(x, p, file=open("text.html", "w"))
+
+##################################################################################
 
 3. Generator
    - yield
